@@ -4,6 +4,7 @@ const port = 3000
 
 app.set('view engine', 'pug')
 app.set('views', './views')
+app.use(express.urlencoded({ extended: true }))
 
 const users = [
   { 
@@ -24,10 +25,24 @@ app.get('/users', function (req, res) {
   res.render('users/index', { users })
 })
 
+app.get('/users/create', function (req, res) {
+  res.render('users/create')
+})
+
+app.post('/users/create', function (req, res) {
+  const newUser = {
+    id: users[users.length - 1].id + 1,
+    name: req.body.name
+  }
+
+  users.push(newUser)
+
+  res.redirect('/users')
+})
+
 app.get('/users/search', function (req, res) {
   const q = req.query.q
   const newUsers = users.filter(user => user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1)
-  console.log(q, newUsers);
 
   res.render('users/index', { 
     curent: q,
