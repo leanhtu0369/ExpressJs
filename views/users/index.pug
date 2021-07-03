@@ -1,0 +1,15 @@
+html
+  head
+  body
+    h1 Users
+    
+    form(action="/users/search", method="GET") 
+      input(type="text", name="q", value=curent )
+      button(type="submit") Search
+
+    each user in users
+      li= user.name
+
+    if users.length === 0
+      p Từ khóa bạn tìm hiện không có
+
