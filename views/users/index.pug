@@ -1,16 +1,19 @@
-html
-  head
-  body
-    h1 Users
-    a(href="/users/create") Add user
-    
-    form(action="/users/search", method="GET") 
-      input(type="text", name="q", value=curent )
-      button(type="submit") Search
+extends ../layouts/common.pug
 
-    each user in users
-      li= user.name
+block content
+  h1 Users
+  a(href="/users/create") Add user
+  
+  form(action="/users/search", method="GET") 
+    input(type="text", name="q", value=curent )
+    button(type="submit") Search
 
-    if users.length === 0
-      p Từ khóa bạn tìm hiện không có
+  each user in users
+    li
+      span= user.name
+      span &nbsp
+      a(href=`/users/${user.id}`) view
+
+  if users.length === 0
+    p Từ khóa bạn tìm hiện không có
 
