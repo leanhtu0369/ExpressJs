@@ -1,0 +1,24 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "name": "Tôi"
+    },
+    {
+      "id": 2,
+      "name": "Đây"
+    },
+    {
+      "id": 3,
+      "name": "admin"
+    },
+    {
+      "id": 4,
+      "name": " Lê Anh Tú"
+    },
+    {
+      "id": 5,
+      "name": "webmaster"
+    }
+  ]
+}

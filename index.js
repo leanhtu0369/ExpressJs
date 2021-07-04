@@ -1,28 +1,26 @@
 const express = require('express')
+
+const low = require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
+
 const app = express()
 const port = 3000
+
+const adapter = new FileSync('db.json')
+const db = low(adapter)
+db.defaults({ user: [] }).write()
+const users = db.get('user').write()
 
 app.set('view engine', 'pug')
 app.set('views', './views')
 app.use(express.urlencoded({ extended: true }))
-
-const users = [
-  { 
-    id: 1,
-    name: 'Tôi'
-  },
-  { 
-    id: 2,
-    name: 'Đây'
-  },
-]
 
 app.get('/', function (req, res) {
   res.render('index', { title: 'Hey', message: 'Hello there!' })
 })
 
 app.get('/users', function (req, res) {
-  res.render('users/index', { users })
+  res.render('users/index', { users: users })
 })
 
 app.get('/users/create', function (req, res) {
@@ -35,7 +33,7 @@ app.post('/users/create', function (req, res) {
     name: req.body.name
   }
 
-  users.push(newUser)
+  db.get('user').push(newUser).write()
 
   res.redirect('/users')
 })
