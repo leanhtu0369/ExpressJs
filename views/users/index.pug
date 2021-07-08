@@ -1,19 +1,28 @@
 extends ../layouts/common.pug
 
 block content
-  h1 Users
-  a(href="/users/create") Add user
+  h1 
+    span.me-3 Users
+    a.btn.btn-primary(href="/users/create") Add user
   
-  form(action="/users/search", method="GET") 
-    input(type="text", name="q", value=curent )
-    button(type="submit") Search
+  .d-flex.align-items-center
+    form.d-flex(action="/users/search", method="GET") 
+      input.form-control(type="text", name="q", value=curent)
+      button.btn.btn-primary.ms-2(type="submit") Search
 
-  each user in users
-    li
-      span= user.name
-      span &nbsp
-      a(href=`/users/${user.id}`) view
+  table.table 
+    tr 
+      th Name
+      th Email 
+      th Actions 
 
-  if users.length === 0
-    p Từ khóa bạn tìm hiện không có
+    each user in users
+      tr
+        td= user.name
+        td= user.email
+        td 
+          a.btn.btn-light(href=`/users/${user.id}`) view
+
+    if users.length === 0
+      p Từ khóa bạn tìm hiện không có
 

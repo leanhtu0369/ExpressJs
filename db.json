@@ -1,40 +1,22 @@
 {
-  "user": [
-    {
-      "id": 1,
-      "name": "Tôi"
-    },
-    {
-      "id": 2,
-      "name": "Đây"
-    },
-    {
-      "id": 3,
-      "name": "admin"
-    },
-    {
-      "id": 4,
-      "name": " Lê Anh Tú"
-    },
-    {
-      "id": 5,
-      "name": "webmaster"
-    },
+  "users": [
     {
       "id": 6,
-      "name": "abc"
+      "name": "Tu Le",
+      "email": "leanhtu0369@icloud.com",
+      "password": "e10adc3949ba59abbe56e057f20f883e"
     },
     {
       "id": 7,
-      "name": "test"
+      "name": "tuan",
+      "email": "leanhtu0369@outlook.com",
+      "password": "d41d8cd98f00b204e9800998ecf8427e"
     },
     {
       "id": 8,
-      "name": "tuan"
-    },
-    {
-      "id": 9,
-      "name": "ok"
+      "name": "webmaster",
+      "email": "leanhtu0369@gmail.com",
+      "password": "202cb962ac59075b964b07152d234b70"
     }
   ]
 }

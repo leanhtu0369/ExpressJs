@@ -1,5 +1,7 @@
+const md5 = require('md5');
+
 const db = require('../db')
-const users = db.get('user').value()
+const users = db.get('users').value()
 
 module.exports.getList = function (req, res) {
   res.render('users/index', { users: users })
@@ -12,10 +14,12 @@ module.exports.getCreate = function (req, res) {
 module.exports.postCreate = function (req, res) {
   const newUser = {
     id: users[users.length - 1].id + 1,
-    name: req.body.name
+    name: req.body.name,
+    email: req.body.email,
+    password: md5(req.body.password)
   }
 
-  db.get('user').push(newUser).write()
+  db.get('users').push(newUser).write()
 
   res.redirect('/users')
 }
@@ -23,7 +27,6 @@ module.exports.postCreate = function (req, res) {
 module.exports.getSearch = function (req, res) {
   const q = req.query.q
   const newUsers = users.filter(user => user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1)
-  // console.log(users, newUsers, req.query.q);
 
   res.render('users/index', { 
     curent: q,
