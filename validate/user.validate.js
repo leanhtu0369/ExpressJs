@@ -1,6 +1,12 @@
 module.exports.postCreate = function (req, res, next) {
   const errs = []
 
+  if (!req.file) {
+    errs.push('Avatar is required')
+  }
+
+  // console.log(req.file);
+  
   if (!req.body.name) {
     errs.push('Name is required')
   }

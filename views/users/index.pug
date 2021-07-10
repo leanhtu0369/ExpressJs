@@ -12,12 +12,15 @@ block content
 
   table.table 
     tr 
+      th Avatar
       th Name
       th Email 
       th Actions 
 
     each user in users
       tr
+        td 
+          img(src= user.avatar ? user.avatar : './images/noimage.jpg', alt="", class="user__avatar")
         td= user.name
         td= user.email
         td 

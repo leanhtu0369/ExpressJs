@@ -16,7 +16,8 @@ module.exports.postCreate = function (req, res) {
     id: users[users.length - 1].id + 1,
     name: req.body.name,
     email: req.body.email,
-    password: md5(req.body.password)
+    password: md5(req.body.password),
+    avatar: req.file.path.split('\\').slice(1).join('/')
   }
 
   db.get('users').push(newUser).write()

@@ -13,10 +13,11 @@
       "password": "d41d8cd98f00b204e9800998ecf8427e"
     },
     {
-      "id": 8,
+      "id": 10,
       "name": "webmaster",
-      "email": "leanhtu0369@gmail.com",
-      "password": "202cb962ac59075b964b07152d234b70"
+      "email": "leanhtu0369@outlook.com",
+      "password": "202cb962ac59075b964b07152d234b70",
+      "avatar": "uploads/77edac65980b5e58ecf03947082a47b2"
     }
   ]
 }
