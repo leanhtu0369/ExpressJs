@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const cookieParser = require('cookie-parser')
 
+const mongoose = require('mongoose');
 const userRoute = require('./routes/user.route')
 const authRoute = require('./routes/auth.route')
 const authMiddelware = require('./middlewares/auth.middleware')
@@ -14,6 +15,7 @@ app.set('view engine', 'pug')
 app.set('views', './views')
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
+mongoose.connect(process.env.MONGO_URL);
 
 const randomStr = Math.random().toString(36).substring(2, 8)
 app.use(cookieParser(randomStr))
